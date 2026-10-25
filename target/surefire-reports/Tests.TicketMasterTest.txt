@@ -1,13 +1,33 @@
 -------------------------------------------------------------------------------
 Test set: Tests.TicketMasterTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 14.43 s <<< FAILURE! -- in Tests.TicketMasterTest
-Tests.TicketMasterTest.runMethod -- Time elapsed: 14.07 s <<< FAILURE!
-java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.JavascriptExecutor.executeScript(String, Object[])" because "this.js" is null
-	at Libraries.CommonFunctions.clickWait2(CommonFunctions.java:71)
-	at Methods.TicketPurchase.submitCommands(TicketPurchase.java:141)
-	at Tests.TicketMasterTest.runMethod(TicketMasterTest.java:15)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 60.97 s <<< FAILURE! -- in Tests.TicketMasterTest
+Tests.TicketMasterTest.runMemberships -- Time elapsed: 49.50 s <<< ERROR!
+org.openqa.selenium.ElementClickInterceptedException: 
+element click intercepted: Element <div tabindex="0" class="item item4 tktmshp_cat792331710 unselected" data-cat="792331710" style="min-height: 303px;">...</div> is not clickable at point (674, 798). Other element would receive the click: <div class="th_footer_buttons">...</div>
+  (Session info: chrome=155.0.8059.85)
+Build info: version: '4.20.0', revision: '866c76ca80'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.5.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [58bb5292f8b908d8400df460a52cae67, clickElement {id=f.843D55D1A5F5A8B904DE21535ECD75E0.d.99E6679C5F6EC88035841A30B027FFF8.e.80}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.85, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\nikhi\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51455}, goog:processID: 15580, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51455/devtoo..., se:cdpVersion: 155.0.8059.85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (58bb5292f8b908d8400df460a52cae67)] -> xpath: //div[contains(@class,'item') and .//div[normalize-space()='Life membership']]]
+Session ID: 58bb5292f8b908d8400df460a52cae67
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at Libraries.CommonFunctions.waitAndClick(CommonFunctions.java:61)
+	at Methods.Memberships.submitCommands1(Memberships.java:112)
+	at Tests.TicketMasterTest.runMemberships(TicketMasterTest.java:47)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
@@ -30,12 +50,4 @@ java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.JavascriptExe
 	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
 	at org.testng.TestNG.runSuites(TestNG.java:1112)
 	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
