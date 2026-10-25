@@ -24,7 +24,38 @@ public class CommonFunctions {
     public CommonFunctions() {
     }
 
+    public void waitPageToLoadAndClick(By locator) {
+        try {
 
+            // Wait for the page to load completely
+            wait.until(webDriver ->
+                ((JavascriptExecutor) webDriver)
+                    .executeScript("return document.readyState")
+                    .equals("complete")
+            );
+
+            // Wait until the element is clickable, then click
+            WebElement element = wait.until(
+                ExpectedConditions.elementToBeClickable(locator)
+            );
+
+            element.click();
+
+        } catch (TimeoutException e) {
+            System.out.println("Page or element did not load in time: " + locator);
+            throw e;
+        }
+    }
+    
+    public boolean isDisplayed(By locator) {
+        try {
+            return !driver.findElements(locator).isEmpty()
+                    && driver.findElements(locator).get(0).isDisplayed();
+        } catch (StaleElementReferenceException e) {
+            return false;
+        }
+    }
+    
     public void waitAndClick(By locator) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
@@ -96,6 +127,8 @@ public class CommonFunctions {
                 || "true".equalsIgnoreCase(ariaDisabled)
                 || (className != null && className.toLowerCase().contains("disabled"));
     }
+    
+  
 
     public int clickPlusButton(By increaseButton, int timesToClick) {
         int clicks = 0;
@@ -141,6 +174,12 @@ public class CommonFunctions {
     public void textInput(By a, String b) {
         wait.until(ExpectedConditions.elementToBeClickable(a));
         driver.findElement(a).sendKeys(b);
+    }
+    
+    public void clickAndInput(By locator, String text) {
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        // Optional: clears pre-existing text before typing
+        element.sendKeys(text);
     }
 
     public void shadowRoot(WebElement element) {
